@@ -4,7 +4,7 @@ html
 }
 
 body
-{ 
+{
 	font-family: sans-serif, Arial, Segoe UI;
 	font-size: 16px;
 	background: #888 url(img/background.png) repeat;
@@ -67,7 +67,7 @@ h1
 .button:disabled:active
 {
 	background: rgba(49, 52, 55, 0.1);
-	color: rgba(255, 255, 255, 0.5); 
+	color: rgba(255, 255, 255, 0.5);
 	border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
@@ -117,7 +117,6 @@ h1
 	position: fixed;
 	bottom: 0px;
 	margin: 0 auto;
-	background-image: url("img/footer-background.png");
 	background-repeat: repeat-x;
 }
 
