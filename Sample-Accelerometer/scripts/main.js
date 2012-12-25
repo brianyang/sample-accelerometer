@@ -78,6 +78,7 @@ AccelerometerApp.prototype = {
   _configWatch: function(){
     var that = this
     alert('config val')
+    _V_.Player.setSpeed(2.0)
   },
 
 	//Get a snapshot of the current acceleration
