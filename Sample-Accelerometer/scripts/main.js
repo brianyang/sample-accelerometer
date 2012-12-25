@@ -22,7 +22,8 @@ AccelerometerApp.prototype = {
 	run: function() {
 		var that = this,
     		startButton = document.getElementById("startButton"),
-    		stopButton = document.getElementById("stopButton");
+    		stopButton = document.getElementById("stopButton"),
+        configButton = document.getElementById('configButton');
 
 		that.spanX = document.getElementById("spanDirectionX");
 		that.spanY = document.getElementById("spanDirectionY");
@@ -38,6 +39,10 @@ AccelerometerApp.prototype = {
 									function() {
 										that._stopWatch.apply(that, arguments)
 									});
+    configButton.addEventListener('click',
+                  function(){
+                    that._configWatch.apply(that, arguments)
+                  });
 	},
 
 	// Start watching the acceleration
@@ -70,6 +75,10 @@ AccelerometerApp.prototype = {
 			that.spanTimeStamp.innerText = emptyText;
 		}
 	},
+  _configWatch: function(){
+    var that = this
+    alert('config val')
+  },
 
 	//Get a snapshot of the current acceleration
 	_onAccelerometerSuccess: function(acceleration) {
