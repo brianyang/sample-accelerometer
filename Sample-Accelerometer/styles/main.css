@@ -122,7 +122,6 @@ h1
 
 .footer:before
 {
-	content: url(img/logo.png);
 	position: relative;
 	top: 2px;
 	left: 12px;
