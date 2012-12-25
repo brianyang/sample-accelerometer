@@ -17,27 +17,29 @@ AccelerometerApp.prototype = {
 	spanY: null,
 	spanZ: null,
 	spanTimeStamp: null,
-    
+  spanDiff: null,
+
 	run: function() {
 		var that = this,
     		startButton = document.getElementById("startButton"),
     		stopButton = document.getElementById("stopButton");
-        
+
 		that.spanX = document.getElementById("spanDirectionX");
 		that.spanY = document.getElementById("spanDirectionY");
 		that.spanZ = document.getElementById("spanDirectionZ");
 		that.spanTimeStamp = document.getElementById("spanTimeStamp");
+    that.spanDiff = document.getElementById("spanDiff")
 
-		startButton.addEventListener("click", 
-									 function() { 
+		startButton.addEventListener("click",
+									 function() {
 										 that._startWatch.apply(that, arguments)
 									 });
-		stopButton.addEventListener("click", 
-									function() { 
+		stopButton.addEventListener("click",
+									function() {
 										that._stopWatch.apply(that, arguments)
 									});
 	},
-    
+
 	// Start watching the acceleration
 	_startWatch: function() {
 		// Only start testing if watchID is currently null.
@@ -45,16 +47,16 @@ AccelerometerApp.prototype = {
 		if (that.watchID === null) {
 			// Update acceleration every .5 second
 			var options = { frequency: 500 };
-			that.watchID = navigator.accelerometer.watchAcceleration(function() { 
+			that.watchID = navigator.accelerometer.watchAcceleration(function() {
 				that._onAccelerometerSuccess.apply(that, arguments)
-			}, 
-            function(error) { 
+			},
+            function(error) {
              that._onAccelerometerError.apply(that, arguments)
-            }, 
+            },
             options);
 		}
 	},
-     
+
 	// Stop watching the acceleration
 	_stopWatch: function() {
 		var that = this;
@@ -68,16 +70,25 @@ AccelerometerApp.prototype = {
 			that.spanTimeStamp.innerText = emptyText;
 		}
 	},
- 
+
 	//Get a snapshot of the current acceleration
 	_onAccelerometerSuccess: function(acceleration) {
 		var that = this;
 		that.spanX.innerText = acceleration.x;
 		that.spanY.innerText = acceleration.y;
-		that.spanZ.innerText = acceleration.z;              
+		that.spanZ.innerText = acceleration.z;
 		that.spanTimeStamp.innerText = acceleration.timestamp;
+
+    var diffVal = function(){
+      var accx = Math.abs(acceleration.x)
+        , accy = Math.abs(acceleration.y)
+        , accz = Math.abs(acceleration.z)
+      return accx + accy + accz
+    }
+
+    that.spanDiff.innerText = diffVal()
 	},
-    
+
 	//Failed to get the acceleration
 	_onAccelerometerError: function(error) {
 		alert("Unable to start accelerometer! Error code: " + error.code );
