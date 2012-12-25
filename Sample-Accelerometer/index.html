@@ -10,6 +10,12 @@
 
 		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 		<script type="text/javascript" charset="utf-8" src="scripts/main.js"></script>
+
+<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/c/video.js"></script>
+
+
+
 	</head>
 	<body>
 		<header class="header">
@@ -39,6 +45,12 @@
 				</div>
 			</div>
 		</div>
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+  preload="auto" width="640" height="264" poster="my_video_poster.png"
+  data-setup="{}">
+  <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4'>
+  <source src="my_video.webm" type='video/webm'>
+</video>
 		<footer class="footer">
 			<div>Cordova API Samples</div>
 		</footer>
